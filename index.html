@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Dynamics | La evolución digital empieza aquí</title>
-    <!-- ÍCONO DE LA PESTAÑA (FAVICON) -->
- <link rel="icon" type="image/png" sizes="32x32" href="./Logo.png">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="./Logo.png">
     <link rel="shortcut icon" type="image/png" href="./Logo.png">
     <link rel="apple-touch-icon" href="./Logo.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         /* ==========================================================================
            1. VARIABLES DE COLOR (TU CASCARÓN REUTILIZABLE)
            Cuando tengas otro cliente, solo cambia estos 4 códigos de color aquí:
            ========================================================================== */
-        root {
+        :root {
             --primary: #5e4b8b;      /* Morado / Índigo Digital (Identidad de tu logo) */
             --secondary: #f06256;    /* Coral / Salmón de acento */
             --dark: #1a1a1a;         /* Pizarra / Fondo oscuro */
@@ -108,55 +110,56 @@
         }
 
         .nav-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 5%; /* Ajustamos el padding para dar espacio al logo grande */
-        width: 100%;
-         }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%; 
+            width: 100%;
+        }
 
-       /* CONTENEDOR GENERAL DEL LOGO EN NAVBAR */
-.logo-composite-container {
-    display: flex;
-    align-items: center;
-    padding: 2px 0;
-}
+        /* CONTENEDOR GENERAL DEL LOGO EN NAVBAR */
+        .logo-composite-container {
+            display: flex;
+            align-items: center;
+            padding: 2px 0;
+        }
 
-/* NOMBRE DE MARCA EN TAMAÑO ORIGINAL DE IMPACTO */
-.brand-title-text {
-    color: var(--white);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
+        /* NOMBRE DE MARCA EN TAMAÑO ORIGINAL DE IMPACTO */
+        .brand-title-text {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
 
-.brand-title-text span {
-    color: var(--secondary);
-}
+        .brand-title-text span {
+            color: var(--secondary);
+        }
 
-/* ESLOGAN OPTIMIZADO: MÁS PEQUEÑO Y REPOSICIONADO ABAJO */
-.brand-slogan-text {
-    color: #a0a0a0;
-    font-size: 0.7rem; /* Reducción de escala acorde */
-    font-weight: 400;
-    margin-top: 4px; /* Espaciado sutil hacia abajo */
-    letter-spacing: 0.3px;
-    text-transform: none;
-}
+        /* ESLOGAN OPTIMIZADO: MÁS PEQUEÑO Y REPOSICIONADO ABAJO */
+        .brand-slogan-text {
+            color: #a0a0a0;
+            font-size: 0.7rem; 
+            font-weight: 400;
+            margin-top: 4px; 
+            letter-spacing: 0.3px;
+            text-transform: none;
+        }
 
-/* RESPONSIVO COMPACTO */
-@media (max-width: 480px) {
-    .brand-slogan-text {
-        display: none; /* Previene distorsión visual en pantallas de baja resolución */
-    }
-}
-       .nav-menu {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-     }
+        /* RESPONSIVO COMPACTO */
+        @media (max-width: 480px) {
+            .brand-slogan-text {
+                display: none; 
+            }
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
 
         .nav-item {
             margin-left: 25px;
@@ -461,16 +464,11 @@
 </head>
 <body>
 
-    <!-- ==========================================================================
-         BOTÓN DE WHATSAPP FLOTANTE
-         <!-- CAMBIA AQUÍ TU NÚMERO DE TELÉFONO REAL (COLOCA TU CLAVE DE PAÍS, EJ. 52 PARA MÉXICO) -->
-         ========================================================================== -->
     <a href="https://wa.me/5212411100515?text=Hola,%20me%20interesa%20un%20levantamiento%20tecnico%20para%20un%20sitio%20web" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- ENCABEZADO -->
-<header>
+    <header>
         <div class="nav-container">
             
             <div class="logo-composite-container">
@@ -498,7 +496,6 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -512,13 +509,11 @@
         </div>
     </section>
 
-    <!-- SERVICIOS / PAQUETES (CON LOS COSTOS INTEGRADOS AJUSTADOS) -->
     <section id="servicios" class="services">
         <div class="container">
             <h2 class="section-title">Soluciones Web</h2>
             <div class="services-grid">
                 
-                <!-- Plan 1 -->
                 <div class="service-card">
                     <div class="card-icon"><i class="fas fa-rocket"></i></div>
                     <h3>Plan Landing Page</h3>
@@ -533,7 +528,6 @@
                     <a href="#contacto" class="btn" style="width:100%; text-align:center;">Cotizar Ahora</a>
                 </div>
 
-                <!-- Plan 2 -->
                 <div class="service-card">
                     <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Plan Corporativo Pyme</h3>
@@ -548,7 +542,6 @@
                     <a href="#contacto" class="btn" style="width:100%; text-align:center;">Cotizar Ahora</a>
                 </div>
 
-                <!-- Plan 3 -->
                 <div class="service-card">
                     <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
                     <h3>Plan E-Commerce</h3>
@@ -565,7 +558,6 @@
 
             </div>
 
-            <!-- BENEFICIO EXCLUSIVO -->
             <div class="callout-box">
                 <h4>🎁 Beneficio de Apertura Exclusivo</h4>
                 <p>El proceso de <strong>Levantamiento de Requerimientos Técnicos es Completamente Gratuito</strong> y sin compromiso comercial. Analizamos las necesidades de tu arquitectura digital antes de iniciar.</p>
@@ -573,7 +565,6 @@
         </div>
     </section>
 
-    <!-- METODOLOGÍA DE TRABAJO -->
     <section class="methodology">
         <div class="container">
             <h2 class="section-title">Nuestra Metodología</h2>
@@ -597,14 +588,11 @@
         </div>
     </section>
 
-    <!-- PORTAFOLIO (EL QUE NO ENSEÑA NO VENDE - TU PROPIO SITIO VIVIENDO EN GITHUB ES EL DEMO 1) -->
     <section id="portafolio">
         <div class="container">
             <h2 class="section-title">Portafolio Digital</h2>
             <div class="portfolio-grid">
                 
-                <!-- Proyecto 1 (Este mismo sitio web optimizado) -->
-                <!-- <!-- CAMBIA AQUÍ LA IMAGEN DE FONDO SI LO REQUIERES (background: url('tu-imagen.jpg')) --> -->
                 <div class="portfolio-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1547658719-da2b81166b58?auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center;">
                     <div class="portfolio-overlay">
                         <h4>Digital Dynamics Hub</h4>
@@ -613,7 +601,6 @@
                     </div>
                 </div>
 
-                <!-- Proyecto 2 (Demo Conceptual para Pymes) -->
                 <div class="portfolio-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center;">
                     <div class="portfolio-overlay">
                         <h4>E-Commerce Pro</h4>
@@ -626,105 +613,94 @@
         </div>
     </section>
 
-    <!-- FORMULARIO DE CONTACTO PROTEGIDO -->
     <section id="contacto" class="contact">
-        <div class="contact-container" style="position: relative; overflow: hidden;">
-    
-    <!-- FORMULARIO PRINCIPAL -->
-    <!-- REEMPLAZA EL '#' POR TU URL DE GOOGLE APPS SCRIPT -->
-    <form id="dynamic-contact-form" action="https://script.google.com/macros/s/AKfycbxIMHN7uPEB-Ex8wzYamSETzkBf8oeLSXS_Y35z6Z1zCJh4N83IP_IzQu_kmEuGiazEcA/exec" method="POST">
-        <div class="form-group">
-            <label for="name">Nombre Completo / Empresa</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Ej. Corporativo Comercial" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Correo Electrónico Institucional</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="director@empresa.com" required>
-        </div>
-        <div class="form-group">
-            <label for="message">Alcance preliminar del proyecto</label>
-            <textarea id="message" name="message" class="form-control" rows="5" placeholder="¿Qué tipo de solución digital requieres potenciar?" required></textarea>
-        </div>
-        <button type="submit" id="submit-btn" class="btn" style="width: 100%;">Solicitar Análisis de Arquitectura Gratuito</button>
-    </form>
+        <div class="container">
+            <h2 class="section-title">Iniciar Proyecto</h2>
+            <div class="contact-container" style="position: relative; overflow: hidden;">
+                
+                <form id="dynamic-contact-form" action="https://script.google.com/macros/s/AKfycbxIMHN7uPEB-Ex8wzYamSETzkBf8oeLSXS_Y35z6Z1zCJh4N83IP_IzQu_kmEuGiazEcA/exec" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo / Empresa</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Ej. Corporativo Comercial" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico Institucional</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="director@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Alcance preliminar del proyecto</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="¿Qué tipo de solución digital requieres potenciar?" required></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="btn" style="width: 100%;">Solicitar Análisis de Arquitectura Gratuito</button>
+                </form>
 
-    <!-- PANTALLA ELEGANTE DE ÉXITO (CON PALOMITA Y TUS TEXTOS) -->
-    <div id="success-message" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--white); flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; animation: fadeIn 0.5s ease forwards;">
-        
-        <!-- Círculo verde con la palomita que se mantiene -->
-        <div style="width: 80px; height: 80px; background-color: #25d366; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 40px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
-            <i class="fas fa-check"></i>
+                <div id="success-message" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--white); flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; animation: fadeIn 0.5s ease forwards;">
+                    
+                    <div style="width: 80px; height: 80px; background-color: #25d366; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 40px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    
+                    <h3 style="color: var(--dark); font-size: 1.8rem; margin-bottom: 15px; font-weight: 700; letter-spacing: 0.5px;">¡Gracias por tu confianza!</h3>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 80%; margin-bottom: 25px;">En breve te contactaremos.</p>
+                    
+                    <button onclick="resetForm()" class="btn btn-secondary" style="border-color: var(--primary); color: var(--primary); padding: 8px 20px; font-size: 0.9rem;">Enviar otro mensaje</button>
+                </div>
+                
+            </div>
         </div>
-        
-        <!-- Tus textos personalizados -->
-        <h3 style="color: var(--dark); font-size: 1.8rem; margin-bottom: 15px; font-weight: 700; letter-spacing: 0.5px;">¡Gracias por tu confianza!</h3>
-        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 80%; margin-bottom: 25px;">En breve te contactaremos.</p>
-        
-        <!-- Botón para poder enviar otro mensaje voluntariamente -->
-        <button onclick="resetForm()" class="btn btn-secondary" style="border-color: var(--primary); color: var(--primary); padding: 8px 20px; font-size: 0.9rem;">Enviar otro mensaje</button>
-    </div>
-</div>
-
-<!-- Animación CSS para la transición suave -->
-<style>
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
-    }
-</style>
     </section>
 
-    <!-- FOOTER SIN LA PALABRA CORPORATE -->
     <footer>
         <p>&copy; 2026 Digital Dynamics. Todos los derechos reservados.</p>
         <p style="font-size: 0.8rem; margin-top: 5px; color: #555;">Desarrollo de Software & Consultoría Tecnológica | Tlaxcala, México</p>
     </footer>
 
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+
     <script>
-    const form = document.getElementById('dynamic-contact-form');
-    const successMessage = document.getElementById('success-message');
-    const submitBtn = document.getElementById('submit-btn');
+        const form = document.getElementById('dynamic-contact-form');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
 
-    form.addEventListener('submit', function(e) {
-        // 1. Detiene la recarga automática de la página
-        e.preventDefault(); 
-        
-        // Cambia temporalmente el estado del botón
-        submitBtn.innerText = "Procesando requerimientos...";
-        submitBtn.style.opacity = "0.7";
-        submitBtn.style.pointerEvents = "none";
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            submitBtn.innerText = "Procesando requerimientos...";
+            submitBtn.style.opacity = "0.7";
+            submitBtn.style.pointerEvents = "none";
 
-        // 2. Empaqueta los datos introducidos por el usuario
-        const formData = new FormData(form);
+            const formData = new FormData(form);
 
-        // 3. Envía los datos de fondo a Google Sheets
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            // 4. Activa la pantalla de éxito con la palomita y tus frases
-            successMessage.style.display = 'flex';
-            form.style.opacity = '0'; 
-        })
-        .catch(error => {
-            alert('Hubo un inconveniente técnico al enviar los datos. Por favor, intenta de nuevo o contáctanos por WhatsApp.');
-            console.error('Error:', error);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                successMessage.style.display = 'flex';
+                form.style.opacity = '0'; 
+            })
+            .catch(error => {
+                alert('Hubo un inconveniente técnico al enviar los datos. Por favor, intenta de nuevo o contáctanos por WhatsApp.');
+                console.error('Error:', error);
+                submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
+                submitBtn.style.opacity = "1";
+                submitBtn.style.pointerEvents = "auto";
+            });
+        });
+
+        function resetForm() {
+            form.reset();
+            form.style.opacity = '1';
+            successMessage.style.display = 'none';
             submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
             submitBtn.style.opacity = "1";
             submitBtn.style.pointerEvents = "auto";
-        });
-    });
-
-    // Función del botón para limpiar y regresar al formulario si se desea
-    function resetForm() {
-        form.reset();
-        form.style.opacity = '1';
-        successMessage.style.display = 'none';
-        submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
-        submitBtn.style.opacity = "1";
-        submitBtn.style.pointerEvents = "auto";
-    }
-</script>
+        }
+    </script>
 </body>
 </html>

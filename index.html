@@ -581,27 +581,50 @@
 
     <!-- FORMULARIO DE CONTACTO PROTEGIDO -->
     <section id="contacto" class="contact">
-        <div class="container">
-            <h2 class="section-title">Iniciar Proyecto</h2>
-            <div class="contact-container">
-                <!-- <!-- CAMBIA AQUÍ EL ACTION SI USAS FORMSPREE O SERVICIOS SIMILARES (EJ. action="https://formspree.io/f/tu_id") --> -->
-                <form action="https://script.google.com/macros/s/AKfycbxIMHN7uPEB-Ex8wzYamSETzkBf8oeLSXS_Y35z6Z1zCJh4N83IP_IzQu_kmEuGiazEcA/exec" method="POST">
-                    <div class="form-group">
-                        <label for="name">Nombre Completo / Empresa</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Ej. Corporativo Comercial" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico Institucional</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="director@empresa.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Alcance preliminar del proyecto</label>
-                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="¿Qué tipo de solución..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Solicitar Análisis de Arquitectura Gratuito</button>
-                </form>
-            </div>
+        <div class="contact-container" style="position: relative; overflow: hidden;">
+    
+    <!-- FORMULARIO PRINCIPAL -->
+    <!-- REEMPLAZA EL '#' POR TU URL DE GOOGLE APPS SCRIPT -->
+    <form id="dynamic-contact-form" action="https://script.google.com/macros/s/AKfycbxIMHN7uPEB-Ex8wzYamSETzkBf8oeLSXS_Y35z6Z1zCJh4N83IP_IzQu_kmEuGiazEcA/exec" method="POST">
+        <div class="form-group">
+            <label for="name">Nombre Completo / Empresa</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Ej. Corporativo Comercial" required>
         </div>
+        <div class="form-group">
+            <label for="email">Correo Electrónico Institucional</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="director@empresa.com" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Alcance preliminar del proyecto</label>
+            <textarea id="message" name="message" class="form-control" rows="5" placeholder="¿Qué tipo de solución digital requieres potenciar?" required></textarea>
+        </div>
+        <button type="submit" id="submit-btn" class="btn" style="width: 100%;">Solicitar Análisis de Arquitectura Gratuito</button>
+    </form>
+
+    <!-- PANTALLA ELEGANTE DE ÉXITO (CON PALOMITA Y TUS TEXTOS) -->
+    <div id="success-message" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--white); flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; animation: fadeIn 0.5s ease forwards;">
+        
+        <!-- Círculo verde con la palomita que se mantiene -->
+        <div style="width: 80px; height: 80px; background-color: #25d366; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 40px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
+            <i class="fas fa-check"></i>
+        </div>
+        
+        <!-- Tus textos personalizados -->
+        <h3 style="color: var(--dark); font-size: 1.8rem; margin-bottom: 15px; font-weight: 700; letter-spacing: 0.5px;">¡Gracias por tu confianza!</h3>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 80%; margin-bottom: 25px;">En breve te contactaremos.</p>
+        
+        <!-- Botón para poder enviar otro mensaje voluntariamente -->
+        <button onclick="resetForm()" class="btn btn-secondary" style="border-color: var(--primary); color: var(--primary); padding: 8px 20px; font-size: 0.9rem;">Enviar otro mensaje</button>
+    </div>
+</div>
+
+<!-- Animación CSS para la transición suave -->
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
     </section>
 
     <!-- FOOTER SIN LA PALABRA CORPORATE -->
@@ -610,5 +633,51 @@
         <p style="font-size: 0.8rem; margin-top: 5px; color: #555;">Desarrollo de Software & Consultoría Tecnológica | Tlaxcala, México</p>
     </footer>
 
+    <script>
+    const form = document.getElementById('dynamic-contact-form');
+    const successMessage = document.getElementById('success-message');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', function(e) {
+        // 1. Detiene la recarga automática de la página
+        e.preventDefault(); 
+        
+        // Cambia temporalmente el estado del botón
+        submitBtn.innerText = "Procesando requerimientos...";
+        submitBtn.style.opacity = "0.7";
+        submitBtn.style.pointerEvents = "none";
+
+        // 2. Empaqueta los datos introducidos por el usuario
+        const formData = new FormData(form);
+
+        // 3. Envía los datos de fondo a Google Sheets
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            // 4. Activa la pantalla de éxito con la palomita y tus frases
+            successMessage.style.display = 'flex';
+            form.style.opacity = '0'; 
+        })
+        .catch(error => {
+            alert('Hubo un inconveniente técnico al enviar los datos. Por favor, intenta de nuevo o contáctanos por WhatsApp.');
+            console.error('Error:', error);
+            submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
+            submitBtn.style.opacity = "1";
+            submitBtn.style.pointerEvents = "auto";
+        });
+    });
+
+    // Función del botón para limpiar y regresar al formulario si se desea
+    function resetForm() {
+        form.reset();
+        form.style.opacity = '1';
+        successMessage.style.display = 'none';
+        submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
+        submitBtn.style.opacity = "1";
+        submitBtn.style.pointerEvents = "auto";
+    }
+</script>
 </body>
 </html>

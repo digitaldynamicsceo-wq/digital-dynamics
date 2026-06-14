@@ -113,15 +113,19 @@
             padding: 15px 5%;
         }
 
-        .logo-container {
+       .logo-composite-container {
            display: flex;
            align-items: center;
-           padding: 2px 0;
+          padding: 5px 0;
         }
 
-        .logo-text span {
-            color: var(--secondary);
-        }
+   /* Este estilo asegura que el eslogan y el texto de marca 
+   se adapten de forma responsiva en pantallas más pequeñas */
+        @media (max-width: 480px) {
+        .logo-composite-container span:last-child {
+        display: none; /* Oculta el eslogan solo en celulares muy pequeños para evitar que se amontone */
+    }
+}
 
         .nav-menu {
             display: flex;
@@ -443,18 +447,21 @@
     <header>
         <div class="nav-container">
             <!-- LOGO ENLAZADO A LA IMAGEN OFICIAL -->
-        <div class="logo-container">
-         <a href="#inicio">
-        <img src="Logo.png" alt="Digital Dynamics Logo" style="max-height: 50px; display: block; width: auto;">
-          </a>
+     <!-- LOGO COMBINADO (IMAGEN + TEXTO + ESLOGAN) -->
+   <div class="logo-composite-container">
+        <a href="#inicio" style="text-decoration: none; display: flex; align-items: center;">
+        <!-- El cuadro contenedor del logo para que resalte del fondo oscuro -->
+        <div style="background-color: var(--white); padding: 5px; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+            <!-- CAMBIA 'Logo.png' POR EL NOMBRE EXACTO DE TU ARCHIVO EN GITHUB (EJ. input_file_1.png) -->
+            <img src="Logo.png" alt="Digital Dynamics Icon" style="max-height: 40px; width: auto; display: block;">
         </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="#servicios" class="nav-link">Servicios</a></li>
-                <li class="nav-item"><a href="#portafolio" class="nav-link">Portafolio</a></li>
-                <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
-            </ul>
+        <!-- Bloque de textos alineados -->
+        <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1.1;">
+            <span style="color: var(--white); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px;">Digital <span style="color: var(--secondary);">Dynamics</span></span>
+            <span style="color: #aaaaaa; font-size: 0.75rem; font-weight: 400; margin-top: 2px; letter-spacing: 0.2px;">La evolución digital empieza aquí</span>
         </div>
+       </a>
+  </div>
     </header>
 
     <!-- HERO SECTION -->

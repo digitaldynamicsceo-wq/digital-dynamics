@@ -462,6 +462,7 @@
             .section-title { font-size: 2rem; }
 
             /* Activa y da estilo a las tres líneas de la hamburguesa */
+           /* Activa y da estilo a las tres líneas de la hamburguesa */
             .menu-toggle {
                 display: flex;
                 flex-direction: column;
@@ -471,7 +472,7 @@
                 background: transparent;
                 border: none;
                 cursor: pointer;
-                z-index: 1010;
+                z-index: 1010; /* Fuerza a que esté POR ENCIMA del fondo */
             }
 
             .menu-toggle .bar {
@@ -729,7 +730,10 @@
         }
     </style>
 
-    <script>
+   <script>
+        // ==========================================
+        // 1. CÓDIGO DEL FORMULARIO (MANTENIDO INTACTO)
+        // ==========================================
         const form = document.getElementById('dynamic-contact-form');
         const successMessage = document.getElementById('success-message');
         const submitBtn = document.getElementById('submit-btn');
@@ -760,6 +764,7 @@
             });
         });
 
+        // Función del botón para limpiar y regresar al formulario si se desea
         function resetForm() {
             form.reset();
             form.style.opacity = '1';
@@ -768,25 +773,32 @@
             submitBtn.style.opacity = "1";
             submitBtn.style.pointerEvents = "auto";
         }
-    </script>
-    // LÓGICA DE CONTROL PARA EL MENÚ DE HAMBURGUESA
+
+
+        // ==========================================
+        // 2. NUEVO CÓDIGO PARA LA HAMBURGUESA MÓVIL
+        // ==========================================
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
         const menuLinks = document.querySelectorAll('.nav-link');
 
-        // 1. Abre o cierra el menú al darle clic a la hamburguesa
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', function(e) {
+                e.preventDefault();
+                mobileMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+        }
 
-        // 2. Cierra el menú automáticamente cuando el usuario da clic en una sección
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                navLinks.classList.remove('remove'); // Alternativa segura de limpieza
-                navLinks.classList.remove('active');
+        // Cierra el menú automáticamente al dar clic en una sección del celular
+        menuLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (mobileMenu && navLinks) {
+                    mobileMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
             });
         });
+    </script>
 </body>
 </html>

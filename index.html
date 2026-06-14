@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Dynamics | La evolución digital empieza aquí</title>
+    <!-- ÍCONO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" type="image/png" href="Logo.png">
     <!-- Iconos profesionales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -111,11 +113,10 @@
             padding: 15px 5%;
         }
 
-        .logo-text {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        .logo-container {
+           display: flex;
+           align-items: center;
+           padding: 2px 0;
         }
 
         .logo-text span {
@@ -441,7 +442,12 @@
     <!-- ENCABEZADO -->
     <header>
         <div class="nav-container">
-            <div class="logo-text">Digital <span>Dynamics</span></div>
+            <!-- LOGO ENLAZADO A LA IMAGEN OFICIAL -->
+        <div class="logo-container">
+         <a href="#inicio">
+        <img src="Logo.png" alt="Digital Dynamics Logo" style="max-height: 50px; display: block; width: auto;">
+          </a>
+        </div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li class="nav-item"><a href="#servicios" class="nav-link">Servicios</a></li>

@@ -6,6 +6,7 @@
     <title>Digital Dynamics | La evolución digital empieza aquí</title>
     <!-- ÍCONO DE LA PESTAÑA (FAVICON) -->
     <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="shortcut icon" type="image/png" href="Logo.png">
     <!-- Iconos profesionales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -113,20 +114,41 @@
             padding: 15px 5%;
         }
 
-       .logo-composite-container {
-           display: flex;
-           align-items: center;
-          padding: 5px 0;
-        }
-
-   /* Este estilo asegura que el eslogan y el texto de marca 
-   se adapten de forma responsiva en pantallas más pequeñas */
-        @media (max-width: 480px) {
-        .logo-composite-container span:last-child {
-        display: none; /* Oculta el eslogan solo en celulares muy pequeños para evitar que se amontone */
-    }
+       /* CONTENEDOR GENERAL DEL LOGO EN NAVBAR */
+.logo-composite-container {
+    display: flex;
+    align-items: center;
+    padding: 2px 0;
 }
 
+/* NOMBRE DE MARCA EN TAMAÑO ORIGINAL DE IMPACTO */
+.brand-title-text {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.brand-title-text span {
+    color: var(--secondary);
+}
+
+/* ESLOGAN OPTIMIZADO: MÁS PEQUEÑO Y REPOSICIONADO ABAJO */
+.brand-slogan-text {
+    color: #a0a0a0;
+    font-size: 0.7rem; /* Reducción de escala acorde */
+    font-weight: 400;
+    margin-top: 4px; /* Espaciado sutil hacia abajo */
+    letter-spacing: 0.3px;
+    text-transform: none;
+}
+
+/* RESPONSIVO COMPACTO */
+@media (max-width: 480px) {
+    .brand-slogan-text {
+        display: none; /* Previene distorsión visual en pantallas de baja resolución */
+    }
+}
         .nav-menu {
             display: flex;
             list-style: none;
@@ -448,13 +470,20 @@
         <div class="nav-container">
             <!-- LOGO ENLAZADO A LA IMAGEN OFICIAL -->
      <!-- LOGO COMBINADO (IMAGEN + TEXTO + ESLOGAN) -->
-   <div class="logo-composite-container">
-        <a href="#inicio" style="text-decoration: none; display: flex; align-items: center;">
-        <!-- El cuadro contenedor del logo para que resalte del fondo oscuro -->
-        <div style="background-color: var(--white); padding: 5px; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-            <!-- CAMBIA 'Logo.png' POR EL NOMBRE EXACTO DE TU ARCHIVO EN GITHUB (EJ. input_file_1.png) -->
-            <img src="Logo.png" alt="Digital Dynamics Icon" style="max-height: 40px; width: auto; display: block;">
+     <div class="logo-composite-container">
+      <a href="#inicio" style="text-decoration: none; display: flex; align-items: center;">
+        
+        <div style="background-color: var(--white); padding: 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 15px; box-shadow: 0 3px 8px rgba(0,0,0,0.3); width: 55px; height: 55px;">
+            <img src="Logo.png" alt="Digital Dynamics Icon" style="max-height: 100%; max-width: 100%; object-fit: contain; display: block;">
         </div>
+        
+        <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1.1;">
+            <span class="brand-title-text">Digital <span>Dynamics</span></span>
+            <span class="brand-slogan-text">La evolución digital empieza aquí</span>
+        </div>
+        
+        </a>
+    </div>
         <!-- Bloque de textos alineados -->
         <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1.1;">
             <span style="color: var(--white); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px;">Digital <span style="color: var(--secondary);">Dynamics</span></span>

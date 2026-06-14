@@ -454,11 +454,75 @@
             font-size: 0.9rem;
         }
 
-        /* RESPONSIVO */
+       /* ==========================================================================
+           DISEÑO RESPONSIVO Y MENÚ DE HAMBURGUESA
+           ========================================================================== */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .nav-menu { display: none; }
             .section-title { font-size: 2rem; }
+
+            /* Activa y da estilo a las tres líneas de la hamburguesa */
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 21px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                z-index: 1010;
+            }
+
+            .menu-toggle .bar {
+                width: 100%;
+                height: 3px;
+                background-color: var(--white);
+                border-radius: 2px;
+                transition: var(--transition);
+            }
+
+            /* Transforma el menú en un panel lateral desplegable */
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Oculto por defecto a la derecha */
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+
+            /* Clase que activa JavaScript para mostrar el menú */
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 20px 0;
+            }
+
+            .nav-link {
+                font-size: 1.3rem;
+            }
+
+            /* Animación visual: Transforma la hamburguesa en una "X" al abrir */
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+                background-color: var(--secondary);
+            }
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+                background-color: var(--secondary);
+            }
         }
     </style>
 </head>
@@ -473,20 +537,23 @@
             
             <div class="logo-composite-container">
                 <a href="#inicio" style="text-decoration: none; display: flex; align-items: center;">
-                    
                     <div style="background-color: var(--white); padding: 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 15px; box-shadow: 0 3px 8px rgba(0,0,0,0.3); width: 55px; height: 55px;">
                         <img src="Logo.png" alt="Digital Dynamics Icon" style="max-height: 100%; max-width: 100%; object-fit: contain; display: block;">
                     </div>
-                    
                     <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1.1;">
                         <span class="brand-title-text">Digital <span>Dynamics</span></span>
                         <span class="brand-slogan-text">La evolución digital empieza aquí</span>
                     </div>
-                    
                 </a>
             </div>
 
-            <ul class="nav-menu">
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-links">
                 <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li class="nav-item"><a href="#servicios" class="nav-link">Servicios</a></li>
                 <li class="nav-item"><a href="#portafolio" class="nav-link">Portafolio</a></li>
@@ -702,5 +769,24 @@
             submitBtn.style.pointerEvents = "auto";
         }
     </script>
+    // LÓGICA DE CONTROL PARA EL MENÚ DE HAMBURGUESA
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        const menuLinks = document.querySelectorAll('.nav-link');
+
+        // 1. Abre o cierra el menú al darle clic a la hamburguesa
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // 2. Cierra el menú automáticamente cuando el usuario da clic en una sección
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('remove'); // Alternativa segura de limpieza
+                navLinks.classList.remove('active');
+            });
+        });
 </body>
 </html>

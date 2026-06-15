@@ -3,173 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Dynamics | La evolución digital empieza aquí</title>
+    <title>Digital Dynamics | Ecosistemas Tecnológicos & Arquitectura Web</title>
     
-    <link rel="icon" type="image/png" sizes="32x32" href="./Logo.png">
-    <link rel="shortcut icon" type="image/png" href="./Logo.png">
-    <link rel="apple-touch-icon" href="./Logo.png">
-    
+    <!-- Tipografías y Recursos de Vanguardia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         /* ==========================================================================
-           1. VARIABLES DE COLOR (TU CASCARÓN REUTILIZABLE)
-           Cuando tengas otro cliente, solo cambia estos 4 códigos de color aquí:
+           VARIABLES DE IDENTIDAD CORPORATIVA (SOLVEK / DIGITAL DYNAMICS)
            ========================================================================== */
         :root {
-            --primary: #5e4b8b;      /* Morado / Índigo Digital (Identidad de tu logo) */
-            --secondary: #f06256;    /* Coral / Salmón de acento */
-            --dark: #1a1a1a;         /* Pizarra / Fondo oscuro */
-            --light: #f8f9fa;        /* Gris claro para fondos de secciones */
+            --primary: #5e4b8b;      /* Púrpura de Alta Ingeniería */
+            --secondary: #f06256;    /* Coral de Innovación y Acción */
+            --dark: #111111;         /* Negro Industrial */
+            --light: #f8f9fa;        /* Gris Claro Premium */
             --white: #ffffff;
-            --text-dark: #333333;
-            --text-muted: #666666;
-            --transition: all 0.3s ease;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* RESET BÁSICO */
+        /* RESET & GENERALES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
-            color: var(--text-dark);
+            font-family: 'Open Sans', sans-serif;
             background-color: var(--white);
+            color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* COMPONENTES REUTILIZABLES */
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 0;
         }
 
+        /* COMPONENTES COMPARTIDOS */
         .btn {
-            display: inline-block;
-            padding: 12px 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 5px;
+            transition: var(--transition);
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
             background-color: var(--primary);
             color: var(--white);
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(94, 75, 139, 0.3);
         }
 
-        .btn:hover {
+        .btn-primary:hover {
             background-color: var(--dark);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--white);
+            background-color: var(--secondary);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(240, 98, 86, 0.3);
         }
 
         .btn-secondary:hover {
             background-color: var(--white);
-            color: var(--dark);
+            color: var(--secondary);
+            transform: translateY(-2px);
+            border: 1px solid var(--secondary);
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            font-size: 2.2rem;
+            font-weight: 800;
             color: var(--dark);
             position: relative;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--secondary);
-            margin: 10px auto 0 auto;
-            border-radius: 2px;
-        }
-
-        /* ENCABEZADO / NAVBAR */
-        header {
-            background-color: var(--dark);
+        /* ==========================================================================
+           BARRA DE NAVEGACIÓN PREMIUM
+           ========================================================================== */
+        .navbar {
+            background-color: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
-            width: 100%;
             top: 0;
-            left: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 18px 0;
+            border-bottom: 1px solid #222222;
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 5%; 
-            width: 100%;
         }
 
-        /* CONTENEDOR GENERAL DEL LOGO EN NAVBAR */
-        .logo-composite-container {
+        .logo-block {
             display: flex;
             align-items: center;
-            padding: 2px 0;
+            gap: 12px;
+            text-decoration: none;
         }
 
-        /* NOMBRE DE MARCA EN TAMAÑO ORIGINAL DE IMPACTO */
-        .brand-title-text {
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-main {
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: 0.8px;
             color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
-        .brand-title-text span {
+        .logo-sub {
+            font-size: 0.65rem;
             color: var(--secondary);
-        }
-
-        /* ESLOGAN OPTIMIZADO: MÁS PEQUEÑO Y REPOSICIONADO ABAJO */
-        .brand-slogan-text {
-            color: #a0a0a0;
-            font-size: 0.7rem; 
-            font-weight: 400;
-            margin-top: 4px; 
-            letter-spacing: 0.3px;
-            text-transform: none;
-        }
-
-        /* RESPONSIVO COMPACTO */
-        @media (max-width: 480px) {
-            .brand-slogan-text {
-                display: none; 
-            }
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
+            gap: 30px;
             align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-item {
-            margin-left: 25px;
         }
 
         .nav-link {
-            color: var(--white);
+            color: #dddddd;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             transition: var(--transition);
         }
 
@@ -177,503 +184,510 @@
             color: var(--secondary);
         }
 
-        /* SECCIÓN HERO (PORTADA) */
+        /* MENÚ HAMBURGUESA */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        /* ==========================================================================
+           HERO SECTION (DISRUPTIVO)
+           ========================================================================== */
         .hero {
-            background: linear-gradient(135deg, var(--dark) 60%, var(--primary));
-            min-height: 100vh;
+            padding: 180px 0 100px 0;
+            background: linear-gradient(135deg, #111111 0%, #1a1528 100%);
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-grid {
             display: flex;
             align-items: center;
-            color: var(--white);
-            padding-top: 80px;
+            flex-wrap: wrap;
+            gap: 50px;
         }
 
-        .hero-content {
-            max-width: 700px;
+        .hero-text {
+            flex: 1 1 500px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        .hero-tag {
+            color: var(--secondary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #cccccc;
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #b0b5c0;
+            margin-bottom: 35px;
+            max-width: 600px;
         }
 
-        .hero-btns .btn {
-            margin-right: 15px;
+        .hero-graphic {
+            flex: 1 1 400px;
+            display: flex;
+            justify-content: center;
+            position: relative;
         }
 
-        /* SECCIÓN SERVICIOS / PLANES COMPLETA */
-        .services {
-            background-color: var(--light);
+        .hero-cube {
+            width: 280px;
+            height: 280px;
+            border: 2px solid rgba(94, 75, 139, 0.3);
+            border-radius: 12px;
+            transform: rotate(45deg);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            background: rgba(255,255,255,0.01);
+            backdrop-filter: blur(5px);
         }
 
-        .services-grid {
+        .hero-cube::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed rgba(240, 98, 86, 0.4);
+            border-radius: 12px;
+            top: 15px;
+            left: 15px;
+        }
+
+        /* ==========================================================================
+           PORTAFOLIO DE CAPACIDADES: LAS 3 DIMENSIONES
+           ========================================================================== */
+        .grid-dimensions {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
         }
 
-        .service-card {
-            background-color: var(--white);
-            flex: 1 1 320px;
-            max-width: 380px;
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            border-top: 4px solid var(--primary);
-            position: relative;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .card-icon {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .service-card i {
-            font-size: 2.5rem;
-            color: var(--secondary);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-            text-align: center;
-        }
-
-        .price-tag {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .service-card ul {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .service-card li {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .service-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #25d366;
-            font-weight: bold;
-        }
-
-        /* BLOQUE DESTACADO (LEVANTAMIENTO GRATUITO) */
-        .callout-box {
-            background-color: #f4f2f8;
-            border-left: 4px solid var(--primary);
-            padding: 25px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .callout-box h4 {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        /* SECCIÓN PORTAFOLIO */
+        /* ==========================================================================
+           LABORATORIO DE INMERSIÓN: PORTAFOLIO VISUAL
+           ========================================================================== */
         .portfolio-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .portfolio-item {
-            flex: 1 1 340px;
-            position: relative;
+            height: 380px;
+            border-radius: 8px;
             overflow: hidden;
-            border-radius: 8px;
-            height: 280px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(94, 75, 139, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: var(--transition);
-            padding: 30px;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-overlay h4 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .portfolio-overlay p {
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        /* SECCIÓN METODOLOGÍA */
-        .methodology {
-            background-color: var(--white);
-        }
-
-        .steps-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-        }
-
-        .step-card {
-            flex: 1 1 250px;
-            background-color: var(--light);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background-color: var(--secondary);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            margin: 0 auto 15px auto;
-        }
-
-        /* FORMULARIO DE CONTACTO */
-        .contact {
-            background-color: var(--light);
-        }
-
-        .contact-container {
-            max-width: 650px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 0.9rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            font-size: 1rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: var(--transition);
         }
 
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 5px rgba(94, 75, 139, 0.3);
+        .portfolio-item:hover {
+            transform: translateY(-5px);
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: #25d366;
-            color: var(--white);
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            transition: var(--transition);
+        @keyframes float {
+            0% { transform: rotate(45deg) translateY(0px); }
+            50% { transform: rotate(45deg) translateY(-15px); }
+            100% { transform: rotate(45deg) translateY(0px); }
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #20ba5a;
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.08); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
         }
 
-        /* FOOTER */
-        footer {
-            background-color: var(--dark);
-            color: #888888;
-            text-align: center;
-            padding: 40px 0;
-            font-size: 0.9rem;
-        }
-
-       /* ==========================================================================
-           DISEÑO RESPONSIVO Y MENÚ DE HAMBURGUESA
+        /* ==========================================================================
+           FORMULARIO DE CAPTURA INTELIGENTE (B2B)
            ========================================================================== */
+        .contact-section {
+            padding: 90px 0;
+            background: linear-gradient(135deg, #161224 0%, #111111 100%);
+            color: var(--white);
+        }
+
+        .form-card {
+            background-color: rgba(255,255,255,0.02);
+            border: 1px solid #2a2a2a;
+            padding: 45px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-control-input {
+            width: 100%;
+            padding: 14px;
+            background-color: rgba(255,255,255,0.03);
+            border: 1px solid #333333;
+            border-radius: 5px;
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-family: 'Open Sans', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background-color: rgba(255,255,255,0.06);
+        }
+
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
-
-            /* Activa y da estilo a las tres líneas de la hamburguesa */
-           /* Activa y da estilo a las tres líneas de la hamburguesa */
-            .menu-toggle {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 30px;
-                height: 21px;
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                z-index: 1010; /* Fuerza a que esté POR ENCIMA del fondo */
-            }
-
-            .menu-toggle .bar {
-                width: 100%;
-                height: 3px;
-                background-color: var(--white);
-                border-radius: 2px;
-                transition: var(--transition);
-            }
-
-            /* Transforma el menú en un panel lateral desplegable */
             .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Oculto por defecto a la derecha */
-                width: 70%;
-                height: 100vh;
-                background-color: rgba(26, 26, 26, 0.98);
-                backdrop-filter: blur(10px);
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: all 0.4s ease;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                padding: 30px 0;
+                border-bottom: 1px solid #222222;
             }
+            .nav-menu.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .form-card { padding: 25px; }
+        }
+        /* ==========================================================================
+           MOTOR DE INMERSIÓN VISUAL 3D (PSEUDO-VR)
+           ========================================================================== */
+        
+        /* Perspectiva espacial para el contenedor del Hero */
+        .hero-graphic {
+            flex: 1 1 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px; /* Genera el punto de fuga 3D */
+            padding: 40px 0;
+        }
 
-            /* Clase que activa JavaScript para mostrar el menú */
-            .nav-menu.active {
-                right: 0;
-            }
+        /* El Cubo de Datos SOLVEK en 3D Real */
+        .cube-3d {
+            width: 160px;
+            height: 160px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 15s linear infinite;
+        }
 
-            .nav-item {
-                margin: 20px 0;
-            }
+        /* Caras individuales del cubo */
+        .cube-face {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 2px solid var(--secondary);
+            background: rgba(94, 75, 139, 0.08);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(240, 98, 86, 0.15);
+            transition: var(--transition);
+        }
 
-            .nav-link {
-                font-size: 1.3rem;
-            }
+        /* Posicionamiento matemático en el espacio 3D (Eje Z y Rotaciones) */
+        .face-front  { transform: rotateY(  0deg) translateZ(80px); border-color: var(--secondary); }
+        .face-back   { transform: rotateY(180deg) translateZ(80px); border-color: var(--primary); }
+        .face-left   { transform: rotateY(-90deg) translateZ(80px); border-color: var(--white); }
+        .face-right  { transform: rotateY( 90deg) translateZ(80px); border-color: var(--secondary); }
+        .face-top    { transform: rotateX( 90deg) translateZ(80px); border-color: var(--primary); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(80px); border-color: var(--white); }
 
-            /* Animación visual: Transforma la hamburguesa en una "X" al abrir */
-            .menu-toggle.active .bar:nth-child(1) {
-                transform: translateY(9px) rotate(45deg);
-                background-color: var(--secondary);
-            }
-            .menu-toggle.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            .menu-toggle.active .bar:nth-child(3) {
-                transform: translateY(-9px) rotate(-45deg);
-                background-color: var(--secondary);
-            }
+        /* Efecto de distorsión al pasar el mouse (Inmersión Táctica) */
+        .cube-3d:hover .cube-face {
+            background: rgba(240, 98, 86, 0.2);
+            border-color: #ffffff;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Animación orbital de realidad virtual */
+        @keyframes rotateCube {
+            0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        }
+
+        /* Efecto Paralaje e Inmersión para las tarjetas del laboratorio */
+        .portfolio-item {
+            background-attachment: fixed !important; /* Congela el fondo simulando profundidad de visor VR */
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            border: 1px solid #222222;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03) translateZ(10px); /* Saca la tarjeta de la pantalla hacia el usuario */
+            border-color: var(--secondary);
+            z-index: 5;
+        }
+        /* ==========================================================================
+           ENTORNO DE INMERSIÓN TOTAL DE ALTA DIMENSIÓN (4D FLUID ARCHITECTURE)
+           ========================================================================== */
+        
+        /* 1. El tejido del espacio-tiempo de fondo en todo el sitio */
+        body {
+            background-color: #0b0813 !important; /* Fondo cósmico ultra oscuro */
+            background-image: 
+                linear-gradient(rgba(94, 75, 139, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(94, 75, 139, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px; /* Red de vectores VR invisible que da simetría */
+            color: #e2e8f0;
+        }
+
+        /* 2. Capas de Profundidad para las Dimensiones de Servicio (Cristal Holográfico) */
+        .grid-dimensions > div {
+            background: rgba(255, 255, 255, 0.02) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.1) !important;
+            transform: translateZ(0);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
+        }
+
+        /* Proyección en el eje Z al pasar el mouse */
+        .grid-dimensions > div:hover {
+            transform: translateY(-10px) translateZ(30px) scale(1.02) !important;
+            border-color: var(--secondary) !important;
+            box-shadow: 0 25px 50px rgba(240, 98, 86, 0.15), inset 0 1px 1px rgba(255,255,255,0.2) !important;
+        }
+
+        /* Forzar texto blanco legible sobre los cristales oscuros */
+        .grid-dimensions h3, .grid-dimensions li {
+            color: #ffffff !important;
+        }
+        
+        .grid-dimensions span {
+            color: var(--secondary) !important;
+        }
+
+        /* 3. El contenedor de Servicios adaptado al entorno holográfico */
+        #servicios {
+            background: transparent !important; /* Muestra la red de vectores de fondo */
+            position: relative;
+        }
+
+        #servicios::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(94, 75, 139, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 4. Efecto de Iluminación de Interfaz de Navegación */
+        .navbar {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+            background-color: rgba(11, 8, 19, 0.85) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+        }
+
+        /* Animación suave para la entrada de datos en el tiempo (4D Flow) */
+        .portfolio-item .portfolio-overlay {
+            background: linear-gradient(to top, rgba(11, 8, 19, 0.95) 40%, rgba(11, 8, 19, 0.2)) !important;
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5212411100515?text=Hola,%20me%20interesa%20un%20levantamiento%20tecnico%20para%20un%20sitio%20web" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <header>
-        <div class="nav-container">
-            
-            <div class="logo-composite-container">
-                <a href="#inicio" style="text-decoration: none; display: flex; align-items: center;">
-                    <div style="background-color: var(--white); padding: 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 15px; box-shadow: 0 3px 8px rgba(0,0,0,0.3); width: 55px; height: 55px;">
-                        <img src="Logo.png" alt="Digital Dynamics Icon" style="max-height: 100%; max-width: 100%; object-fit: contain; display: block;">
-                    </div>
-                    <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1.1;">
-                        <span class="brand-title-text">Digital <span>Dynamics</span></span>
-                        <span class="brand-slogan-text">La evolución digital empieza aquí</span>
-                    </div>
-                </a>
-            </div>
-
-            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
+    <!-- NAV BARRA OFICIAL -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo-block">
+                <div class="logo-icon"><span style="color:white; font-weight:800; font-size:1.1rem;">DD</span></div>
+                <div class="logo-text">
+                    <span class="logo-main">DIGITAL DYNAMICS</span>
+                    <span class="logo-sub">MÉXICO · INGENIERÍA DIGITAL</span>
+                </div>
+            </a>
             <ul class="nav-menu" id="nav-links">
-                <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="#servicios" class="nav-link">Servicios</a></li>
-                <li class="nav-item"><a href="#portafolio" class="nav-link">Portafolio</a></li>
-                <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li><a href="#" class="nav-link">Inicio</a></li>
+                <li><a href="#servicios" class="nav-link">Dimensiones</a></li>
+                <li><a href="#portafolio" class="nav-link">Inmersión</a></li>
+                <li><a href="#contacto" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.75rem;">Análisis Técnico</a></li>
             </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
 
+    <!-- HERO DISRUPTIVO -->
+    <header class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="hero-tag">Infraestructura Digital de Vanguardia</span>
+                <h1>Diseñamos los Ecosistemas que Aceleran tu Organización</h1>
+                <p>No construimos páginas web genéricas. Estructuramos entornos interactivos de alta velocidad, automatizaciones inteligentes con IA y análisis predictivo de datos para mitigar la carga operativa de tu empresa.</p>
+                <div style="display:flex; flex-wrap:wrap; gap:15px;">
+                    <a href="#servicios" class="btn btn-primary">Explorar Capacidades</a>
+                    <a href="#portafolio" class="btn btn-secondary">Laboratorio Vivo</a>
+                </div>
+            </div>
+           <div class="hero-graphic">
+                <div class="cube-3d">
+                    <div class="cube-face face-front">DATA</div>
+                    <div class="cube-face face-back">CORE</div>
+                    <div class="cube-face face-left">WEB</div>
+                    <div class="cube-face face-right">IA</div>
+                    <div class="cube-face face-top">MX</div>
+                    <div class="cube-face face-bottom">CLOUD</div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
+    <!-- SECCIÓN: CATÁLOGO DE SOLUCIONES (3 DIMENSIONES) -->
+    <section id="servicios" style="padding: 100px 0; background-color: var(--light);">
         <div class="container">
-            <div class="hero-content">
-                <h1>La evolución digital empieza aquí</h1>
-                <p>Estructuramos plataformas web de alto rendimiento, código optimizado para motores de búsqueda (SEO) y arquitecturas en la nube adaptables a celulares.</p>
-                <div class="hero-btns">
-                    <a href="#contacto" class="btn">Agendar Levantamiento</a>
-                    <a href="#portafolio" class="btn btn-secondary">Ver Portafolio</a>
-                </div>
+            
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; display: block; margin-bottom: 10px;">Catálogo Real de Soluciones</span>
+                <h2 class="section-title" style="margin-bottom: 20px;">Ingeniería Arquitectónica Digital</h2>
+                <div style="width: 50px; height: 3px; background-color: var(--secondary); margin: 0 auto;"></div>
+                <p style="color: var(--text-muted); max-width: 650px; margin: 20px auto 0 auto; font-size: 1rem;">Estructuramos ecosistemas tecnológicos dedicados a expandir la presencia comercial, gobernar flujos de datos y automatizar la interacción inteligente.</p>
             </div>
-        </div>
-    </section>
 
-    <section id="servicios" class="services">
-        <div class="container">
-            <h2 class="section-title">Soluciones Web</h2>
-            <div class="services-grid">
+            <div class="grid-dimensions">
                 
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Plan Landing Page</h3>
-                    <div class="price-tag">$5,800 <small style="font-size:0.8rem; color:var(--text-muted);">MXN</small></div>
-                    <ul>
-                        <li>Estructura continua de impacto único (Single Page)</li>
-                        <li>Formulario inteligente de captura de leads</li>
-                        <li>Integración directa con API de WhatsApp</li>
-                        <li>Diseño 100% responsivo para celulares</li>
-                        <li>Tiempo de entrega: 6 a 8 días hábiles</li>
-                    </ul>
-                    <a href="#contacto" class="btn" style="width:100%; text-align:center;">Cotizar Ahora</a>
+                <!-- DIMENSIÓN 1: HUBS CORPORATIVOS -->
+                <div style="flex: 1 1 300px; max-width: 380px; background-color: var(--white); padding: 40px 30px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border-top: 4px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="width: 50px; height: 50px; background-color: rgba(94, 75, 139, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                            <i class="fas fa-network-wired" style="color: var(--primary); font-size: 1.4rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.25rem; color: var(--dark); font-weight: 700; margin-bottom: 15px;">Dimensión 01<br><span style="font-weight:400; font-size:1.1rem; color:var(--text-muted);">Hubs & Identidad Web</span></h3>
+                        <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
+                            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px; font-size: 0.8rem;"></i> Landing Pages de Alta Conversión</li>
+                            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px; font-size: 0.8rem;"></i> Sitios Web Corporativos Estáticos</li>
+                            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px; font-size: 0.8rem;"></i> E-Commerce e Integración de Pagos</li>
+                        </ul>
+                    </div>
+                    <span style="font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-top: 30px; display: block;">Infraestructura de Presencia</span>
                 </div>
 
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Plan Corporativo Pyme</h3>
-                    <div class="price-tag">$16,500 <small style="font-size:0.8rem; color:var(--text-muted);">MXN</small></div>
-                    <ul>
-                        <li>Arquitectura dinámica de hasta 5 secciones</li>
-                        <li>Sistema de Gestión de Contenidos (CMS) Autogestionable</li>
-                        <li>Optimización inicial de velocidad (WPO)</li>
-                        <li>Estructura modular lista para SEO de Google</li>
-                        <li>Tiempo de entrega: 20 a 25 días hábiles</li>
-                    </ul>
-                    <a href="#contacto" class="btn" style="width:100%; text-align:center;">Cotizar Ahora</a>
+                <!-- DIMENSIÓN 2: TUBERÍAS DE DATOS & ANALÍTICA -->
+                <div style="flex: 1 1 300px; max-width: 380px; background-color: var(--white); padding: 40px 30px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border-top: 4px solid var(--secondary); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="width: 50px; height: 50px; background-color: rgba(240, 98, 86, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                            <i class="fas fa-chart-line" style="color: var(--secondary); font-size: 1.4rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.25rem; color: var(--dark); font-weight: 700; margin-bottom: 15px;">Dimensión 02<br><span style="font-weight:400; font-size:1.1rem; color:var(--text-muted);">Data, Telemetría & Python</span></h3>
+                        <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
+                            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 8px; font-size: 0.8rem;"></i> Captura Asíncrona Serverless</li>
+                            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 8px; font-size: 0.8rem;"></i> Analytics Predictivo (Python)</li>
+                            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 8px; font-size: 0.8rem;"></i> Tableros e Integración IoT / Hardware</li>
+                        </ul>
+                    </div>
+                    <span style="font-size: 0.75rem; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; margin-top: 30px; display: block;">Inteligencia Operativa</span>
                 </div>
 
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <h3>Plan E-Commerce</h3>
-                    <div class="price-tag">$34,000 <small style="font-size:0.8rem; color:var(--text-muted);">MXN</small></div>
-                    <ul>
-                        <li>Plataforma de comercio electrónico con carrito de compras</li>
-                        <li>Integración de pasarelas seguras (Stripe, PayPal, Mercado Pago)</li>
-                        <li>Módulo automatizado de inventarios y envíos</li>
-                        <li>Panel privado y cuentas seguras para clientes</li>
-                        <li>Tiempo de entrega: 35 a 45 días hábiles</li>
-                    </ul>
-                    <a href="#contacto" class="btn" style="width:100%; text-align:center;">Cotizar Ahora</a>
+                <!-- DIMENSIÓN 3: MOTORES COGNITIVOS IA -->
+                <div style="flex: 1 1 300px; max-width: 380px; background-color: var(--dark); padding: 40px 30px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-top: 4px solid #ffffff; display: flex; flex-direction: column; justify-content: space-between; color: #ffffff;">
+                    <div>
+                        <div style="width: 50px; height: 50px; background-color: rgba(255, 255, 255, 0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                            <i class="fas fa-brain" style="color: var(--secondary); font-size: 1.4rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.25rem; color: var(--white); font-weight: 700; margin-bottom: 15px;">Dimensión 03<br><span style="font-weight:400; font-size:1.1rem; color:#a0a0a0;">Motores de Automatización</span></h3>
+                        <ul style="list-style: none; color: #e0e0e0; font-size: 0.9rem; line-height: 1.8;">
+                            <li style="margin-bottom: 8px;"><i class="fas fa-bolt" style="color: var(--secondary); margin-right: 8px; font-size: 0.8rem;"></i> Agentes de IA para WhatsApp API</li>
+                            <li style="margin-bottom: 8px;"><i class="fas fa-bolt" style="color: var(--secondary); margin-right: 8px; font-size: 0.8rem;"></i> Arquitecturas RAG / Contexto Interno</li>
+                            <li style="margin-bottom: 8px;"><i class="fas fa-bolt" style="color: var(--secondary); margin-right: 8px; font-size: 0.8rem;"></i> Consultoría & Capacitación de Élite</li>
+                        </ul>
+                    </div>
+                    <span style="font-size: 0.75rem; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; margin-top: 30px; display: block;">Automatización Cognitiva</span>
                 </div>
 
-            </div>
-
-            <div class="callout-box">
-                <h4>🎁 Beneficio de Apertura Exclusivo</h4>
-                <p>El proceso de <strong>Levantamiento de Requerimientos Técnicos es Completamente Gratuito</strong> y sin compromiso comercial. Analizamos las necesidades de tu arquitectura digital antes de iniciar.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="methodology">
-        <div class="container">
-            <h2 class="section-title">Nuestra Metodología</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Levantamiento</h3>
-                    <p>Diagnóstico de requerimientos, objetivos y arquitectura web ideal sin costo inicial.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Estructuración</h3>
-                    <p>Diseño visual estructurado, definición de contenidos y aprobación de interfaces.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>Desarrollo y Cierre</h3>
-                    <p>Programación de código limpio, pruebas de velocidad, indexación SEO y liberación formal.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="portafolio">
+    <!-- SECCIÓN: LABORATORIO DE INMERSIÓN OPERATIVA (PORTAFOLIO VISUAL) -->
+    <section id="portafolio" style="background-color: var(--dark); color: var(--white); padding: 100px 0; border-top: 1px solid #2a2a2a;">
         <div class="container">
-            <h2 class="section-title">Portafolio Digital</h2>
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span style="color: var(--secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 10px;">Ecosistemas Activos</span>
+                <h2 class="section-title" style="color: var(--white);">Espacios de Inmersión Digital</h2>
+                <p style="color: #a0a0a0; max-width: 700px; margin: 20px auto 0 auto; font-size: 1rem;">Explore las pruebas de estrés táctico de nuestras tres dimensiones arquitectónicas corriendo en tiempo real de forma serverless.</p>
+            </div>
+            
             <div class="portfolio-grid">
                 
-                <div class="portfolio-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1547658719-da2b81166b58?auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center;">
-                    <div class="portfolio-overlay">
-                        <h4>Digital Dynamics Hub</h4>
-                        <p>Plataforma de consultoría optimizada bajo arquitectura estática con velocidad de carga menor a 1 segundo.</p>
-                        <span style="font-size:0.8rem; background:var(--secondary); padding:3px 10px; border-radius:3px;">Caso de Éxito Actual</span>
+                <!-- Tarjeta 1: Hub Corporativo (Dimensión 1) -->
+                <div class="portfolio-item" style="background: linear-gradient(rgba(26,26,26,0.6), rgba(26,26,26,0.95)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center;">
+                    <div class="portfolio-overlay" style="display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; height: 100%;">
+                        <div style="margin-bottom: auto;"><i class="fas fa-network-wired" style="font-size: 1.8rem; color: var(--secondary);"></i></div>
+                        <h4 style="font-size: 1.25rem; margin-bottom: 8px; color: var(--white);">Dimensión 1: Hubs de Identidad</h4>
+                        <p style="color: #cccccc; font-size: 0.85rem; margin-bottom: 15px;">Entornos optimizados con velocidades de respuesta menores a 1 segundo para posicionamiento y conversión comercial estricta.</p>
+                        <!-- Apunta al Módulo 1 -->
+                        <a href="generador.html?modulo=dimension1" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.8rem; align-self: flex-start; box-shadow: 0 4px 12px rgba(240,98,86,0.25);">
+                            Iniciar Paseo de Inmersión <i class="fas fa-vr-cardboard"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="portfolio-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center;">
-                    <div class="portfolio-overlay">
-                        <h4>E-Commerce Pro</h4>
-                        <p>Modelo arquitectónico de comercio electrónico con bases de datos dinámicas en la nube e integración de pasarelas.</p>
-                        <span style="font-size:0.8rem; background:var(--primary); padding:3px 10px; border-radius:3px;">Demo Técnico</span>
+                <!-- Tarjeta 2: Tuberías de Datos & Python (Dimensión 2) -->
+                <div class="portfolio-item" style="background: linear-gradient(rgba(26,26,26,0.6), rgba(26,26,26,0.95)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center;">
+                    <div class="portfolio-overlay" style="display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; height: 100%;">
+                        <div style="margin-bottom: auto;"><i class="fas fa-database" style="font-size: 1.8rem; color: var(--primary);"></i></div>
+                        <h4 style="font-size: 1.25rem; margin-bottom: 8px; color: var(--white);">Dimensión 2: Control Predictivo</h4>
+                        <p style="color: #cccccc; font-size: 0.85rem; margin-bottom: 15px;">Procesamiento estadístico de inventarios e históricos limpios para la toma de decisiones basada en Machine Learning.</p>
+                        <!-- Apunta al Módulo 2 -->
+                        <a href="generador.html?modulo=dimension2" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.8rem; align-self: flex-start; box-shadow: 0 4px 12px rgba(240,98,86,0.25);">
+                            Iniciar Paseo de Inmersión <i class="fas fa-vr-cardboard"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Motores Cognitivos / SOLVEK Engine (Dimensión 3) -->
+                <div class="portfolio-item" style="background: linear-gradient(rgba(26,26,26,0.4), rgba(26,26,26,0.9)), url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; border: 1px solid var(--secondary);">
+                    <div class="portfolio-overlay" style="display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; height: 100%;">
+                        <div style="margin-bottom: auto; display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <i class="fas fa-brain" style="font-size: 1.8rem; color: var(--secondary); animation: pulse 2s infinite;"></i>
+                            <span style="font-size: 0.65rem; color: var(--secondary); font-weight: 700; background: rgba(240,98,86,0.15); padding: 2px 6px; border-radius: 3px; border: 1px solid var(--secondary);">DEMO EN VIVO</span>
+                        </div>
+                        <h4 style="font-size: 1.25rem; margin-bottom: 8px; color: var(--white);">Dimensión 3: Automatización Cognitiva</h4>
+                        <p style="color: #cccccc; font-size: 0.85rem; margin-bottom: 15px;">Entorno operativo interactivo impulsado por nuestro motor de IA interno (SOLVEK Engine). Procesamiento lógico de flujos de trabajo avanzados.</p>
+                        <!-- Apunta al Módulo 3 -->
+                        <a href="generador.html?modulo=dimension3" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.8rem; align-self: flex-start; box-shadow: 0 4px 12px rgba(240,98,86,0.25);">
+                            Iniciar Paseo de Inmersión <i class="fas fa-vr-cardboard"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -681,103 +695,94 @@
         </div>
     </section>
 
-    <section id="contacto" class="contact">
+    <!-- FORMULARIO DE CAPTURA COMERCIAL CALIFICADO -->
+    <section id="contacto" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Iniciar Proyecto</h2>
-            <div class="contact-container" style="position: relative; overflow: hidden;">
-                
-                <form id="dynamic-contact-form" action="https://script.google.com/macros/s/AKfycbxIMHN7uPEB-Ex8wzYamSETzkBf8oeLSXS_Y35z6Z1zCJh4N83IP_IzQu_kmEuGiazEcA/exec" method="POST">
-                    <div class="form-group">
-                        <label for="name">Nombre Completo / Empresa</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Ej. Corporativo Comercial" required>
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; margin-bottom: 15px;"><i class="fas fa-fingerprint" style="color: var(--secondary); margin-right: 12px;"></i>Solicitud de Auditoría Operativa</h2>
+                <p style="color: #a0a0a0; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Defina el dolor de infraestructura técnica de su negocio. Nuestro sistema procesará sus requerimientos de inmediato.</p>
+            </div>
+
+            <div class="form-card">
+                <!-- Reutilizamos tu acción de Google Apps Script intacta -->
+                <form id="dynamic-contact-form" action="https://script.google.com/macros/s/AKfycbyb5gN8iQyW6jWscb_T276C71yKAtV3x6K07Mv1C7G_wOfu4_Z6YkO56gO79-7gA_yF/exec" method="POST">
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                        <input type="text" name="nombre" class="form-control-input" style="flex: 1 1 280px;" placeholder="Nombre Corporativo / Representante" required>
+                        <input type="email" name="correo" class="form-control-input" style="flex: 1 1 280px;" placeholder="Correo Electrónico Institucional" required>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico Institucional</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="director@empresa.com" required>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                        <input type="tel" name="whatsapp" class="form-control-input" style="flex: 1 1 280px;" placeholder="Número de Enlace WhatsApp" required>
+                        
+                        <!-- El selector califica inteligentemente el servicio que le interesa al cliente -->
+                        <select name="servicio_interes" class="form-control-input" style="flex: 1 1 280px; background-color: #222222;" required>
+                            <option value="" disabled selected hidden>Dimensión de Solución Requerida</option>
+                            <option value="Dimensión 01: Hubs e Identidad Web">Dimensión 01: Hub Corporativo / Sitio Web / E-Commerce</option>
+                            <option value="Dimensión 02: Tuberías de Datos & Python">Dimensión 02: Cuadro de Mando / Analytics Predictivo / IoT</option>
+                            <option value="Dimensión 03: Motores Cognitivos IA">Dimensión 03: Agente Autónomo WhatsApp / Automatización IA</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Alcance preliminar del proyecto</label>
-                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="¿Qué tipo de solución digital requieres potenciar?" required></textarea>
-                    </div>
-                    <button type="submit" id="submit-btn" class="btn" style="width: 100%;">Solicitar Análisis de Arquitectura Gratuito</button>
+
+                    <textarea name="descripcion_dolor" class="form-control-input" style="height: 120px; resize: none;" placeholder="Describa el cuello de botella o requerimiento de su organización..." required></textarea>
+
+                    <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">Solicitar Análisis de Arquitectura Gratuito</button>
                 </form>
 
-                <div id="success-message" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--white); flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; animation: fadeIn 0.5s ease forwards;">
-                    
-                    <div style="width: 80px; height: 80px; background-color: #25d366; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 40px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
-                        <i class="fas fa-check"></i>
-                    </div>
-                    
-                    <h3 style="color: var(--dark); font-size: 1.8rem; margin-bottom: 15px; font-weight: 700; letter-spacing: 0.5px;">¡Gracias por tu confianza!</h3>
-                    <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 80%; margin-bottom: 25px;">En breve te contactaremos.</p>
-                    
-                    <button onclick="resetForm()" class="btn btn-secondary" style="border-color: var(--primary); color: var(--primary); padding: 8px 20px; font-size: 0.9rem;">Enviar otro mensaje</button>
+                <!-- MENSAJE DEÉXITO OCULTO -->
+                <div id="success-message" style="display: none; flex-direction: column; align-items: center; text-align: center; padding: 20px; animation: fadeIn 0.5s ease;">
+                    <i class="fas fa-shield-heart" style="font-size: 3.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
+                    <h3 style="color: white; margin-bottom: 10px;">Requerimientos Registrados con Éxito</h3>
+                    <p style="color: #a0a0a0; font-size: 0.9rem;">La tubería de datos ha procesado su información. Un consultor técnico de Digital Dynamics se enlazará vía WhatsApp en menos de 12 horas para coordinar su auditoría de arquitectura.</p>
                 </div>
-                
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Digital Dynamics. Todos los derechos reservados.</p>
-        <p style="font-size: 0.8rem; margin-top: 5px; color: #555;">Desarrollo de Software & Consultoría Tecnológica | Tlaxcala, México</p>
+    <!-- FOOTER CORPORATIVO -->
+    <footer style="background-color: #0b0b0b; padding: 40px 0; border-top: 1px solid #1a1a1a; text-align: center; color: #555555; font-size: 0.8rem;">
+        <div class="container">
+            <p style="margin-bottom: 10px;">&copy; 2026 DIGITAL DYNAMICS SYSTEMS. Todos los derechos reservados.</p>
+            <p style="letter-spacing: 0.5px;">Powered by <span style="color: var(--secondary); font-weight:600;">SOLVEK Engine</span> - Santa Anita Huiloac, Tlaxcala.</p>
+        </div>
     </footer>
 
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-    </style>
-
-   <script>
-        // ==========================================
-        // 1. CÓDIGO DEL FORMULARIO (MANTENIDO INTACTO)
-        // ==========================================
+    <!-- CABLEADO LÓGICO DE INTERFAZ -->
+    <script>
+        // CONTROL DE ENVÍO ASÍNCRONO DEL FORMULARIO COMERCIAL
         const form = document.getElementById('dynamic-contact-form');
         const successMessage = document.getElementById('success-message');
         const submitBtn = document.getElementById('submit-btn');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
-            submitBtn.innerText = "Procesando requerimientos...";
-            submitBtn.style.opacity = "0.7";
-            submitBtn.style.pointerEvents = "none";
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                
+                submitBtn.innerText = "Procesando requerimientos estructurales...";
+                submitBtn.style.opacity = "0.6";
+                submitBtn.style.pointerEvents = "none";
 
-            const formData = new FormData(form);
+                const formData = new FormData(form);
 
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                successMessage.style.display = 'flex';
-                form.style.opacity = '0'; 
-            })
-            .catch(error => {
-                alert('Hubo un inconveniente técnico al enviar los datos. Por favor, intenta de nuevo o contáctanos por WhatsApp.');
-                console.error('Error:', error);
-                submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
-                submitBtn.style.opacity = "1";
-                submitBtn.style.pointerEvents = "auto";
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    successMessage.style.display = 'flex';
+                    form.style.display = 'none'; 
+                })
+                .catch(error => {
+                    alert('Inconveniente en la conexión asíncrona de datos. Reintente o enlace por WhatsApp.');
+                    console.error('Error:', error);
+                    submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
+                    submitBtn.style.opacity = "1";
+                    submitBtn.style.pointerEvents = "auto";
+                });
             });
-        });
-
-        // Función del botón para limpiar y regresar al formulario si se desea
-        function resetForm() {
-            form.reset();
-            form.style.opacity = '1';
-            successMessage.style.display = 'none';
-            submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
-            submitBtn.style.opacity = "1";
-            submitBtn.style.pointerEvents = "auto";
         }
 
-
-        // ==========================================
-        // 2. NUEVO CÓDIGO PARA LA HAMBURGUESA MÓVIL
-        // ==========================================
+        // CONTROL MENÚ HAMBURGUESA MÓVIL
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
         const menuLinks = document.querySelectorAll('.nav-link');
@@ -790,7 +795,6 @@
             });
         }
 
-        // Cierra el menú automáticamente al dar clic en una sección del celular
         menuLinks.forEach(function(link) {
             link.addEventListener('click', function() {
                 if (mobileMenu && navLinks) {

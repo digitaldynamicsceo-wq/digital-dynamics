@@ -775,7 +775,7 @@
 
     <!-- CABLEADO LÓGICO DE INTERFAZ -->
     <script>
-        // CONTROL DE ENVÍO ASÍNCRONO DEL FORMULARIO COMERCIAL
+       // CONTROL ASÍNCRONO: ENVÍO DE AUDITORÍA A GOOGLE APPS SCRIPT
         const form = document.getElementById('dynamic-contact-form');
         const successMessage = document.getElementById('success-message');
         const submitBtn = document.getElementById('submit-btn');
@@ -784,24 +784,27 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault(); 
                 
-                submitBtn.innerText = "Procesando requerimientos estructurales...";
-                submitBtn.style.opacity = "0.6";
+                // Bloqueo táctico del botón para evitar spam de peticiones
+                submitBtn.innerText = "Transmitiendo variables estructurales...";
+                submitBtn.style.opacity = "0.5";
                 submitBtn.style.pointerEvents = "none";
 
                 const formData = new FormData(form);
 
+                // Envío asíncrono directo a tu Apps Script existente
                 fetch(form.action, {
                     method: 'POST',
                     body: formData
                 })
                 .then(response => {
+                    // Transición limpia hacia la pantalla de éxito
                     successMessage.style.display = 'flex';
                     form.style.display = 'none'; 
                 })
                 .catch(error => {
-                    alert('Inconveniente en la conexión asíncrona de datos. Reintente o enlace por WhatsApp.');
-                    console.error('Error:', error);
-                    submitBtn.innerText = "Solicitar Análisis de Arquitectura Gratuito";
+                    alert('Inconveniente en la tubería asíncrona de datos. Por favor reintente.');
+                    console.error('Error de envío:', error);
+                    submitBtn.innerText = "Enviar Datos para Solicitud de Análisis Técnico";
                     submitBtn.style.opacity = "1";
                     submitBtn.style.pointerEvents = "auto";
                 });

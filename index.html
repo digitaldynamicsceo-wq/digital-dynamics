@@ -696,44 +696,70 @@
     </section>
 
     <!-- FORMULARIO DE CAPTURA COMERCIAL CALIFICADO -->
+   <!-- FORMULARIO DE CAPTURA COMERCIAL CALIFICADO (AUDITORÍA GRATUITA) -->
     <section id="contacto" class="contact-section">
         <div class="container">
             <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 2rem; margin-bottom: 15px;"><i class="fas fa-fingerprint" style="color: var(--secondary); margin-right: 12px;"></i>Solicitud de Auditoría Operativa</h2>
-                <p style="color: #a0a0a0; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Defina el dolor de infraestructura técnica de su negocio. Nuestro sistema procesará sus requerimientos de inmediato.</p>
+                <span style="color: var(--secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; display: block; margin-bottom: 10px;">Diagnóstico Inicial Sin Costo</span>
+                <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; color: var(--white);"><i class="fas fa-fingerprint" style="color: var(--secondary); margin-right: 12px;"></i>Solicitud de Análisis de Arquitectura Gratuito</h2>
+                <div style="width: 50px; height: 3px; background-color: var(--secondary); margin: 0 auto 20px auto;"></div>
+                <p style="color: #a0a0a0; max-width: 650px; margin: 0 auto; font-size: 1rem; line-height: 1.6;">
+                    Defina los cuellos de botella técnicos o requerimientos operativos de su organización. Nuestro sistema procesará las variables para coordinar su sesión de auditoría.
+                </p>
             </div>
 
             <div class="form-card">
-                <!-- Reutilizamos tu acción de Google Apps Script intacta -->
+                <!-- Tu acción de enlace a Google Apps Script se mantiene centralizada -->
                 <form id="dynamic-contact-form" action="https://script.google.com/macros/s/AKfycbyb5gN8iQyW6jWscb_T276C71yKAtV3x6K07Mv1C7G_wOfu4_Z6YkO56gO79-7gA_yF/exec" method="POST">
                     
+                    <!-- Fila 1: Datos de Contacto Directo -->
                     <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-                        <input type="text" name="nombre" class="form-control-input" style="flex: 1 1 280px;" placeholder="Nombre Corporativo / Representante" required>
-                        <input type="email" name="correo" class="form-control-input" style="flex: 1 1 280px;" placeholder="Correo Electrónico Institucional" required>
+                        <div style="flex: 1 1 280px; display: flex; flex-direction: column; margin-bottom: 20px;">
+                            <label style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Nombre Completo / Institución o Empresa</label>
+                            <input type="text" name="nombre" class="form-control-input" style="margin-bottom: 0;" placeholder="Ej. Ing. Carlos Mendoza / Plantel Educativo Centro" required>
+                        </div>
+                        <div style="flex: 1 1 280px; display: flex; flex-direction: column; margin-bottom: 20px;">
+                            <label style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Correo Electrónico de Contacto</label>
+                            <input type="email" name="correo" class="form-control-input" style="margin-bottom: 0;" placeholder="ejemplo@dominio.com" required>
+                        </div>
                     </div>
                     
+                    <!-- Fila 2: Enlace Operativo y Segmentación Eficaz -->
                     <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-                        <input type="tel" name="whatsapp" class="form-control-input" style="flex: 1 1 280px;" placeholder="Número de Enlace WhatsApp" required>
+                        <div style="flex: 1 1 280px; display: flex; flex-direction: column; margin-bottom: 20px;">
+                            <label style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Número de Enlace WhatsApp</label>
+                            <input type="tel" name="whatsapp" class="form-control-input" style="margin-bottom: 0;" placeholder="Ej. 2461234567" required>
+                        </div>
                         
-                        <!-- El selector califica inteligentemente el servicio que le interesa al cliente -->
-                        <select name="servicio_interes" class="form-control-input" style="flex: 1 1 280px; background-color: #222222;" required>
-                            <option value="" disabled selected hidden>Dimensión de Solución Requerida</option>
-                            <option value="Dimensión 01: Hubs e Identidad Web">Dimensión 01: Hub Corporativo / Sitio Web / E-Commerce</option>
-                            <option value="Dimensión 02: Tuberías de Datos & Python">Dimensión 02: Cuadro de Mando / Analytics Predictivo / IoT</option>
-                            <option value="Dimensión 03: Motores Cognitivos IA">Dimensión 03: Agente Autónomo WhatsApp / Automatización IA</option>
-                        </select>
+                        <div style="flex: 1 1 280px; display: flex; flex-direction: column; margin-bottom: 20px;">
+                            <label style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Dimensión de Infraestructura Requerida</label>
+                            <select name="servicio_interes" class="form-control-input" style="margin-bottom: 0; background-color: #1a1528; color: white;" required>
+                                <option value="" disabled selected hidden>Seleccione la solución...</option>
+                                <option value="Dimensión 01: Hubs e Identidad Web">Dimensión 01: Sitios Web Estáticos / Hubs Corporativos / E-Commerce</option>
+                                <option value="Dimensión 02: Tuberías de Datos & Python">Dimensión 02: Tableros Predictivos / Analítica con Python / Monitoreo e IoT</option>
+                                <option value="Dimensión 03: Motores Cognitivos (Docentes/IA)">Dimensión 03: Licencias SOLVEK Engine / Capacitación Docente / Agentes WhatsApp</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <textarea name="descripcion_dolor" class="form-control-input" style="height: 120px; resize: none;" placeholder="Describa el cuello de botella o requerimiento de su organización..." required></textarea>
+                    <!-- Fila 3: El Dolor Técnico -->
+                    <div style="display: flex; flex-direction: column; margin-bottom: 25px;">
+                        <label style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Descripción del Cuello de Botella o Requerimiento Operativo</label>
+                        <textarea name="descripcion_dolor" class="form-control-input" style="height: 110px; resize: none; margin-bottom: 0;" placeholder="Describa brevemente qué proceso operativo o administrativo desea automatizar, optimizar o mitigar con tecnología..." required></textarea>
+                    </div>
 
-                    <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">Solicitar Análisis de Arquitectura Gratuito</button>
+                    <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; padding: 16px 30px;">Enviar Datos para Solicitud de Análisis Técnico</button>
                 </form>
 
-                <!-- MENSAJE DEÉXITO OCULTO -->
-                <div id="success-message" style="display: none; flex-direction: column; align-items: center; text-align: center; padding: 20px; animation: fadeIn 0.5s ease;">
-                    <i class="fas fa-shield-heart" style="font-size: 3.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
-                    <h3 style="color: white; margin-bottom: 10px;">Requerimientos Registrados con Éxito</h3>
-                    <p style="color: #a0a0a0; font-size: 0.9rem;">La tubería de datos ha procesado su información. Un consultor técnico de Digital Dynamics se enlazará vía WhatsApp en menos de 12 horas para coordinar su auditoría de arquitectura.</p>
+                <!-- CONTENEDOR DE ÉXITO ASÍNCRONO (Mantiene estética 4D) -->
+                <div id="success-message" style="display: none; flex-direction: column; align-items: center; text-align: center; padding: 30px 10px; animation: fadeIn 0.5s ease;">
+                    <div style="width: 60px; height: 60px; background-color: rgba(240, 98, 86, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; border: 1px solid var(--secondary);">
+                        <i class="fas fa-shield-heart" style="font-size: 2rem; color: var(--secondary);"></i>
+                    </div>
+                    <h3 style="color: white; font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">Petición de Análisis Procesada</h3>
+                    <p style="color: #a0a0a0; font-size: 0.95rem; max-width: 550px; line-height: 1.6;">
+                        La tubería asíncrona ha registrado sus variables con éxito. Un arquitecto digital de <strong>Digital Dynamics MX</strong> evaluará los requerimientos estructurales y se enlazará vía WhatsApp en un lapso no mayor a 12 horas.
+                    </p>
                 </div>
             </div>
         </div>

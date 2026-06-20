@@ -832,101 +832,344 @@
                 }
             });
         });
-    </script>
-    
-    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2025/06/17/20/20250617201914-6M28W0A1.js" defer></script>
-  <!-- Estilos personalizados Digital Dynamics para el widget -->
+<!-- SOLVEK Chat Widget - Digital Dynamics MX -->
 <style>
-  /* Botón flotante - accesible desde afuera */
-  #bp-web-widget-container > div > button,
-  #bp-web-widget-container button[class*="floating"],
-  div[id*="botpress"] button {
-    background: linear-gradient(135deg, #5e4b8b, #f06256) !important;
-    box-shadow: 0 0 25px rgba(240, 98, 86, 0.6) !important;
-    border: 2px solid #f06256 !important;
+  #solvek-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5e4b8b, #f06256);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(240, 98, 86, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  #solvek-btn:hover { transform: scale(1.1); }
+  #solvek-btn svg { width: 28px; height: 28px; fill: white; }
+
+  #solvek-chat {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 370px;
+    height: 520px;
+    background: #0b0813;
+    border: 1px solid #5e4b8b;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(94, 75, 139, 0.4);
+    z-index: 9998;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
   }
 
-  /* Marco del iframe */
-  #bp-web-widget-container iframe {
-    border-radius: 12px !important;
-    box-shadow: 0 0 40px rgba(94, 75, 139, 0.4) !important;
+  #solvek-header {
+    background: linear-gradient(135deg, #1a1528, #0b0813);
+    border-bottom: 2px solid #f06256;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #solvek-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5e4b8b, #f06256);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  #solvek-header-text { flex: 1; }
+  #solvek-header-text h4 {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0 0 2px;
+  }
+  #solvek-header-text span {
+    color: #f06256;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  #solvek-close {
+    background: none;
+    border: none;
+    color: #a0a0a0;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+  }
+  #solvek-close:hover { color: #f06256; }
+
+  #solvek-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #0b0813;
+    background-image:
+      linear-gradient(rgba(94,75,139,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94,75,139,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  #solvek-messages::-webkit-scrollbar { width: 4px; }
+  #solvek-messages::-webkit-scrollbar-track { background: #0b0813; }
+  #solvek-messages::-webkit-scrollbar-thumb { background: #5e4b8b; border-radius: 4px; }
+
+  .solvek-msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .solvek-msg.bot {
+    background: rgba(94, 75, 139, 0.15);
+    border: 1px solid rgba(94, 75, 139, 0.4);
+    color: #e0e0e0;
+    align-self: flex-start;
+    border-radius: 2px 8px 8px 8px;
+  }
+
+  .solvek-msg.user {
+    background: linear-gradient(135deg, #5e4b8b, #f06256);
+    color: #ffffff;
+    align-self: flex-end;
+    border-radius: 8px 2px 8px 8px;
+  }
+
+  .solvek-typing {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 10px 14px;
+    background: rgba(94,75,139,0.15);
+    border: 1px solid rgba(94,75,139,0.4);
+    border-radius: 2px 8px 8px 8px;
+    align-self: flex-start;
+    width: fit-content;
+  }
+
+  .solvek-typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f06256;
+    animation: typing 1.2s infinite;
+  }
+  .solvek-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .solvek-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #solvek-composer {
+    border-top: 1px solid rgba(94,75,139,0.4);
+    background: #0f0f1a;
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  #solvek-input {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(94,75,139,0.4);
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #solvek-input:focus { border-color: #f06256; }
+  #solvek-input::placeholder { color: #555; }
+
+  #solvek-send {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5e4b8b, #f06256);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  #solvek-send:hover { transform: scale(1.1); }
+  #solvek-send svg { width: 16px; height: 16px; fill: white; }
+
+  #solvek-footer {
+    text-align: center;
+    font-size: 9px;
+    color: #333;
+    padding: 6px;
+    background: #0b0813;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    #solvek-chat { width: calc(100vw - 20px); right: 10px; bottom: 90px; }
+    #solvek-btn { right: 15px; bottom: 20px; }
   }
 </style>
 
-<!-- Inyección de estilos dentro del iframe de Botpress -->
+<!-- Botón flotante -->
+<button id="solvek-btn" aria-label="Abrir chat SOLVEK">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.06L2 22l4.94-1.37C8.42 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+  </svg>
+</button>
+
+<!-- Ventana de chat -->
+<div id="solvek-chat">
+  <div id="solvek-header">
+    <div id="solvek-avatar">DD</div>
+    <div id="solvek-header-text">
+      <h4>SOLVEK Engine</h4>
+      <span>Digital Dynamics MX · Agente IA</span>
+    </div>
+    <button id="solvek-close">✕</button>
+  </div>
+
+  <div id="solvek-messages">
+    <div class="solvek-msg bot">
+      Bienvenido a <strong>Digital Dynamics MX</strong>. Soy SOLVEK, tu arquitecto digital inteligente.<br><br>
+      Puedo orientarte sobre nuestras dimensiones de servicio: sitios web, analytics predictivo, agentes IA y capacitación. ¿En qué puedo ayudarte hoy?
+    </div>
+  </div>
+
+  <div id="solvek-composer">
+    <input id="solvek-input" type="text" placeholder="Escribe tu consulta..." autocomplete="off"/>
+    <button id="solvek-send" aria-label="Enviar">
+      <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+    </button>
+  </div>
+  <div id="solvek-footer">Powered by SOLVEK Engine · Digital Dynamics MX</div>
+</div>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    function injectStyles() {
-      const iframe = document.querySelector('#bp-web-widget-container iframe');
-      if (iframe && iframe.contentDocument) {
-        const style = iframe.contentDocument.createElement('style');
-        style.textContent = `
-          * { font-family: 'Courier New', monospace !important; }
+  const GEMINI_KEY = 'AQUI_TU_API_KEY';
 
-          /* Fondo general */
-          body, [class*="layout"], [class*="container"] {
-            background-color: #0a0a0a !important;
-          }
+  const solvekContext = `Eres SOLVEK, el agente de inteligencia artificial de Digital Dynamics MX, una empresa de ingeniería digital ubicada en Santa Anita Huiloac, Tlaxcala, México.
 
-          /* Header */
-          [class*="header"] {
-            background-color: #0a0a0a !important;
-            border-bottom: 2px solid #c0392b !important;
-          }
+Servicios que ofreces:
+- Dimensión 01: Landing pages, sitios web corporativos, e-commerce
+- Dimensión 02: Analytics predictivo con Python, tableros IoT, captura serverless
+- Dimensión 03: Agentes IA para WhatsApp, arquitecturas RAG, consultoría y capacitación SOLVEK Engine
 
-          [class*="header"] * {
-            color: #ffffff !important;
-            letter-spacing: 2px !important;
-            text-transform: uppercase !important;
-          }
+Tu objetivo es orientar al visitante, responder sus dudas sobre los servicios y motivarlos a solicitar el Análisis de Arquitectura Gratuito en el formulario del sitio.
 
-          /* Fondo del chat */
-          [class*="chat"], [class*="messages"] {
-            background-color: #0f0f0f !important;
-          }
+Responde siempre en español, de forma profesional pero cercana. Máximo 3 párrafos cortos por respuesta.`;
 
-          /* Burbujas bot */
-          [class*="bot"] [class*="bubble"],
-          [class*="from-bot"] [class*="bubble"] {
-            background-color: #1a1a1a !important;
-            color: #e0e0e0 !important;
-            border: 1px solid #c0392b !important;
-            border-radius: 4px !important;
-          }
+  const messages = [];
+  const messagesEl = document.getElementById('solvek-messages');
+  const input = document.getElementById('solvek-input');
+  const btn = document.getElementById('solvek-btn');
+  const chat = document.getElementById('solvek-chat');
+  const closeBtn = document.getElementById('solvek-close');
+  const sendBtn = document.getElementById('solvek-send');
 
-          /* Burbujas usuario */
-          [class*="user"] [class*="bubble"],
-          [class*="from-user"] [class*="bubble"] {
-            background-color: #c0392b !important;
-            color: #ffffff !important;
-            border-radius: 4px !important;
-          }
-
-          /* Input y composer */
-          [class*="composer"], input, textarea {
-            background-color: #1a1a1a !important;
-            color: #ffffff !important;
-            border-top: 1px solid #c0392b !important;
-          }
-
-          input::placeholder, textarea::placeholder {
-            color: #666666 !important;
-          }
-
-          /* Botón enviar */
-          [class*="send"] button, [class*="send"] svg {
-            color: #c0392b !important;
-            fill: #c0392b !important;
-          }
-        `;
-        iframe.contentDocument.head.appendChild(style);
-      } else {
-        setTimeout(injectStyles, 500);
-      }
-    }
-    setTimeout(injectStyles, 2000);
+  btn.addEventListener('click', () => {
+    chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+    if (chat.style.display === 'flex') input.focus();
   });
+
+  closeBtn.addEventListener('click', () => { chat.style.display = 'none'; });
+
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+  sendBtn.addEventListener('click', sendMessage);
+
+  function addMessage(text, role) {
+    const div = document.createElement('div');
+    div.className = `solvek-msg ${role}`;
+    div.innerHTML = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'solvek-typing';
+    div.id = 'solvek-typing';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function hideTyping() {
+    const t = document.getElementById('solvek-typing');
+    if (t) t.remove();
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    messages.push({ role: 'user', parts: [{ text }] });
+    input.value = '';
+    showTyping();
+
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: solvekContext }] },
+          contents: messages
+        })
+      });
+
+      const data = await res.json();
+      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'En este momento no puedo procesar tu consulta. Por favor intenta de nuevo.';
+
+      hideTyping();
+      addMessage(reply.replace(/\n/g, '<br>'), 'bot');
+      messages.push({ role: 'model', parts: [{ text: reply }] });
+
+    } catch (err) {
+      hideTyping();
+      addMessage('Error de conexión con SOLVEK Engine. Por favor intenta de nuevo.', 'bot');
+    }
+  }
 </script>
 </body>
 </html>

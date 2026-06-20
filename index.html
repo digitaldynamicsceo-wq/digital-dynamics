@@ -836,6 +836,97 @@
     
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2025/06/17/20/20250617201914-6M28W0A1.js" defer></script>
-    
+    <!-- Personalización widget Digital Dynamics -->
+<script>
+  window.botpressWebChat.onEvent(function() {}, ['LIFECYCLE.LOADED']);
+</script>
+
+<style>
+  /* Botón flotante */
+  #bp-web-widget-container .bpw-floating-button {
+    background: linear-gradient(135deg, #c0392b, #e74c3c) !important;
+    box-shadow: 0 0 20px rgba(192, 57, 43, 0.5) !important;
+    border-radius: 50% !important;
+  }
+
+  /* Header del chat */
+  #bp-web-widget-container .bpw-header-container {
+    background: #0a0a0a !important;
+    border-bottom: 1px solid #c0392b !important;
+  }
+
+  /* Nombre en el header */
+  #bp-web-widget-container .bpw-header-name {
+    color: #ffffff !important;
+    font-family: 'Courier New', monospace !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+  }
+
+  /* Subtítulo del header */
+  #bp-web-widget-container .bpw-header-subtitle {
+    color: #c0392b !important;
+    font-size: 11px !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* Fondo del chat */
+  #bp-web-widget-container .bpw-chat-container {
+    background: #0f0f0f !important;
+  }
+
+  /* Mensajes del bot */
+  #bp-web-widget-container .bpw-from-bot .bpw-chat-bubble {
+    background: #1a1a1a !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #c0392b !important;
+    border-radius: 4px !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 13px !important;
+  }
+
+  /* Mensajes del usuario */
+  #bp-web-widget-container .bpw-from-user .bpw-chat-bubble {
+    background: #c0392b !important;
+    color: #ffffff !important;
+    border-radius: 4px !important;
+  }
+
+  /* Input de texto */
+  #bp-web-widget-container .bpw-composer input {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    border: 1px solid #333 !important;
+    font-family: 'Courier New', monospace !important;
+  }
+
+  #bp-web-widget-container .bpw-composer input::placeholder {
+    color: #666 !important;
+  }
+
+  /* Área del composer */
+  #bp-web-widget-container .bpw-composer {
+    background: #0a0a0a !important;
+    border-top: 1px solid #c0392b !important;
+  }
+
+  /* Botón enviar */
+  #bp-web-widget-container .bpw-send-button {
+    color: #c0392b !important;
+  }
+
+  /* Avatar del bot */
+  #bp-web-widget-container .bpw-bot-avatar {
+    background: #c0392b !important;
+    border: 1px solid #e74c3c !important;
+  }
+
+  /* Ventana del chat */
+  #bp-web-widget-container .bpw-layout {
+    border: 1px solid #c0392b !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 30px rgba(192, 57, 43, 0.3) !important;
+  }
+</style>
 </body>
 </html>
